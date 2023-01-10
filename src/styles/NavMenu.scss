@@ -1,0 +1,52 @@
+$menu-color: #23272f;
+$tab-background-color: #1e2227;
+$dPadding: 20px;
+
+.nav-menu {
+    padding: $dPadding $dPadding 0px $dPadding;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.nav-menu-top {
+    background-color: $menu-color;
+    padding: 20px;
+    width: calc(100% - $dPadding * 2);
+    border-radius: 25px 25px 0px 0px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 10px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.red {
+    background-color: #ff5f57;
+}
+
+.dot.yellow {
+    background-color: #fdbc2e;
+}
+
+.dot.green {
+    background-color: #28c840;
+}
+
+.nav-menu-tabs-section {
+    width: 100%;
+    height: 35px;
+    background-color: $tab-background-color;
+    display: flex;
+    color: white;
+    flex-direction: row;
+    gap: 10px;
+}
