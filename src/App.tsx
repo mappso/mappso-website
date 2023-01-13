@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/App.scss";
 import NavMenu from "./components/NavMenu";
 import Resume from "./pages/Resume";
+import WebFont from "webfontloader";
 
 function App() {
-    const [count, setCount] = useState(0);
+    useEffect(() => {
+        WebFont.load({
+            google: {
+                families: ["Source Code Pro"],
+            },
+        });
+    }, []);
 
     return (
         <div className="App">
