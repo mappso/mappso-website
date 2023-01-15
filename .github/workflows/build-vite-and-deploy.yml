@@ -54,7 +54,7 @@ jobs:
           # Git domain (default github.com)
           domain: github.com/mappso-website
           target_branch: gh-pages
-          repo: mappso.github.com/mappso-website
+          repo: ""
           build_dir: dist
           # Write the given domain name to the CNAME file
           fqdn: prod
