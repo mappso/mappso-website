@@ -19,11 +19,11 @@ function App() {
                 <NavMenu
                     tabs={[
                         {
-                            title: "Tab.cs",
+                            title: "Test.cs",
                             content: Resume,
                         },
                         {
-                            title: "Tab2.ts",
+                            title: "hej aske.ts",
                             content: Resume,
                         },
                         {

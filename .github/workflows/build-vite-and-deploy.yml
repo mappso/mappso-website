@@ -1,0 +1,64 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - 'releases/**'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
+
+      - name: GitHub Pages
+        # You may pin to the exact commit or the version.
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Git domain (default github.com)
+          domain: github.com/mappso-website
+          target_branch: gh-pages
+          repo: github.com/mappso/mappso-website.git
+          build_dir: dist
+          # Write the given domain name to the CNAME file
+          fqdn: prod
+          # Allow Jekyll to build your site
+          jekyll: true
+          # If enabled, nothing will be pushed
+          dry_run: false
