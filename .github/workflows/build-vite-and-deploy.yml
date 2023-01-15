@@ -45,8 +45,18 @@ jobs:
           name: production-files
           path: ./dist
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: GitHub Pages
+        # You may pin to the exact commit or the version.
+        uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          # Git domain (default github.com)
+          domain: github.com/mappso-website
+          repo: $GITHUB_REPOSITORY
+          target_branch: gh-pages
+          build_dir: dist
+          # Write the given domain name to the CNAME file
+          fqdn: prod
+          # Allow Jekyll to build your site
+          jekyll: true
+          # If enabled, nothing will be pushed
+          dry_run: false
