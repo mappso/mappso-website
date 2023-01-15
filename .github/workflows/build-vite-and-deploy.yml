@@ -35,6 +35,8 @@ jobs:
         run: git config --global user.email ${{vars.EMAIL}}}
       - name: Set name config
         run: git config --global user.name mappso
+      - name: Credential helper
+        run: git config --global credential.helper wincred
       - name: deploy with gh-pages
         run: npm run deploy
   # Single deploy job since we're just deploying
