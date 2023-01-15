@@ -16,7 +16,7 @@ function App() {
                             content: Resume,
                         },
                         {
-                            title: "Tab2.ts",
+                            title: "hej aske.ts",
                             content: Resume,
                         },
                         {
