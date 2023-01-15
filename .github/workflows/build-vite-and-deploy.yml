@@ -34,7 +34,7 @@ jobs:
       - name: Set email config
         run: git config --global user.email ${{vars.EMAIL}}}
       - name: Set name config
-        run: git config --global user.name ${{vars.NAME}}}
+        run: git config --global user.name mappso
       - name: deploy with gh-pages
         run: npm run deploy
   # Single deploy job since we're just deploying
