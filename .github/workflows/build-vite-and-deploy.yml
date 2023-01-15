@@ -48,10 +48,11 @@ jobs:
       - name: GitHub Pages
         # You may pin to the exact commit or the version.
         uses: crazy-max/ghaction-github-pages@v3.1.0
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           # Git domain (default github.com)
           domain: github.com/mappso-website
-          repo: $GITHUB_REPOSITORY
           target_branch: gh-pages
           build_dir: dist
           # Write the given domain name to the CNAME file
@@ -60,5 +61,3 @@ jobs:
           jekyll: true
           # If enabled, nothing will be pushed
           dry_run: false
-        env:
-           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
