@@ -52,9 +52,9 @@ jobs:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           # Git domain (default github.com)
-          domain: github.com/mappso-website
+          #domain: github.com/mappso-website
           target_branch: gh-pages
-          repo: github.com/mappso/mappso-website.git
+          #repo: github.com/mappso/mappso-website.git
           build_dir: dist
           # Write the given domain name to the CNAME file
           fqdn: prod
