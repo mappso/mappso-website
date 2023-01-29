@@ -1,5 +1,5 @@
-export class TabModel {
-    constructor(public title: string, public content: React.FC) {
-
-    }
+export interface TabModel {
+    title: string; 
+    iconSrc: string;
+    directorySrc: string;
 }

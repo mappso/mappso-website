@@ -1,0 +1,81 @@
+@import "./Theme.scss";
+
+.dot :not(.show) {
+    display: none;
+}
+
+.icon-close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.icon-close::before, .icon-close::after{
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 1.5px;
+    background-color: #a33c38;
+    border-radius: 1px;
+}
+.icon-close::before
+{
+    transform: rotateZ(45deg);
+}
+
+.icon-close::after
+{
+    transform: rotateZ(-45deg);
+}
+
+
+.icon-minimize{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.icon-minimize::before{
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 1.5px;
+    background-color: #a0771f;
+    border-radius: 1px;
+}
+.icon-minimize::before
+{
+    transform: rotateZ(90deg);
+}
+
+
+.icon-maximize{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.icon-maximize::before{
+    content: '';
+    position: absolute;
+    height: 7px;
+    width: 7px;
+    background-color: #1e7f29;
+    border-radius: 1px;
+}
+
+.icon-maximize::after{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 2px;
+    background-color: #28c840;
+}
+
+.icon-maximize::after
+{
+    transform: rotateZ(45deg);
+}

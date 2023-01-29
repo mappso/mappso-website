@@ -1,0 +1,63 @@
+@import "./Theme.scss";
+
+.toggle-menu-button {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-menu-button:hover{
+    cursor: pointer;
+}
+
+$graphic-height: 16px;
+$graphic-width: 13px;
+
+.graphic {
+    content: "";
+    position: absolute;
+    height: $graphic-height;
+    width: $graphic-width;
+    border-radius: 2px;
+    border: 1.5px solid $primary-color-white;
+}
+.graphic::before {
+    content: "";
+    transform: translate(3px,-8px);
+    position: absolute;
+    height: $graphic-height;
+    width: $graphic-width;
+    background-color: $menu-color;
+    border-radius: 2px;
+    border: 1.5px solid $primary-color-white;
+
+}
+
+.graphic::after {
+    content: "";
+    transform: translate(13px,-8px);
+    position: absolute;
+    height: 3px;
+    width: 3px;
+    border: 1.5px solid $primary-color-white;
+}
+.graphic .line {
+    content: "";
+    transform: translate(14.5px,-8.7px) rotateZ(45deg);
+    position: absolute;
+    height: 3px;
+    width: 6px;
+    z-index: 1;
+    border: 1.5px solid $primary-color-white;
+    border-style: none none solid none;
+    background-color: $menu-color;
+}
+
+// BurgerMenu
+
+
+
+

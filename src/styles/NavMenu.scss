@@ -1,9 +1,7 @@
-$menu-color: #23272f;
-$tab-background-color: #1e2227;
-$dPadding: 20px;
+@import "./Theme.scss";
+$padding: 15px;
 
 .nav-menu {
-    padding: $dPadding $dPadding 0px $dPadding;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -12,21 +10,43 @@ $dPadding: 20px;
 
 .nav-menu-top {
     background-color: $menu-color;
-    padding: 20px;
-    width: calc(100% - $dPadding * 2);
-    border-radius: 25px 25px 0px 0px;
+    padding: $padding;
+    width: calc(100% - $padding * 2);
+    border-radius: $padding $padding 0px 0px;
     height: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav-menu-top-left {
     display: flex;
     flex-direction: row;
     justify-content: start;
     gap: 10px;
+    height: 15px;
+}
+
+.nav-menu-top-middle{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: $secondary-color-white;
+    font-size: 13px;
+}
+
+.nav-menu-top-right {
+    width: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
 }
 
 .dot {
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    display: inline-block;
 }
 
 .dot.red {
@@ -41,6 +61,10 @@ $dPadding: 20px;
     background-color: #28c840;
 }
 
+.dot:hover{
+    cursor: pointer;
+}
+
 .nav-menu-tabs-section {
     width: 100%;
     height: 35px;
@@ -48,5 +72,4 @@ $dPadding: 20px;
     display: flex;
     color: white;
     flex-direction: row;
-    gap: 10px;
 }
