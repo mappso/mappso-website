@@ -4,12 +4,16 @@
     margin-top: 10px;
     width: 40px;
     height: 40px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
 
-.toggle-menu-button:hover{
+.menu-root {
+    display: flex;
+}
+
+.toggle-menu-button:hover {
     cursor: pointer;
 }
 
@@ -26,19 +30,18 @@ $graphic-width: 13px;
 }
 .graphic::before {
     content: "";
-    transform: translate(3px,-8px);
+    transform: translate(3px, -8px);
     position: absolute;
     height: $graphic-height;
     width: $graphic-width;
     background-color: $menu-color;
     border-radius: 2px;
     border: 1.5px solid $primary-color-white;
-
 }
 
 .graphic::after {
     content: "";
-    transform: translate(13px,-8px);
+    transform: translate(13px, -8px);
     position: absolute;
     height: 3px;
     width: 3px;
@@ -46,7 +49,7 @@ $graphic-width: 13px;
 }
 .graphic .line {
     content: "";
-    transform: translate(14.5px,-8.7px) rotateZ(45deg);
+    transform: translate(14.5px, -8.7px) rotateZ(45deg);
     position: absolute;
     height: 3px;
     width: 6px;
@@ -56,8 +59,58 @@ $graphic-width: 13px;
     background-color: $menu-color;
 }
 
-// BurgerMenu
+.burger-menu .content {
+    display: none;
+}
 
+// Navigation menu
+@media screen and (max-width: $mobile-width) {
+    .toggle-menu-button {
+        display: flex;
+    }
 
+    .burger-menu {
+        position: absolute;
+        bottom: 0;
+        margin: 0px $dPadding;
+        right: 0;
+        width: calc(100vw - 2 * $dPadding);
+        height: calc(100vh - calc(3 * $dPadding + $headerHeight));
+        flex-direction: row;
+        justify-content: end;
+        display: none;
+        background-color: transparent;
+    }
+    .burger-menu.show {
+        display: flex;
+        background-color: rgba($color: #000000, $alpha: 0.8);
+    }
 
+    .burger-menu .content {
+        width: 80%;
 
+        display: block;
+        z-index: 10;
+        background-color: $menu-color;
+    }
+
+    .burger-menu .content .tab {
+        display: flex;
+        width: 100%;
+        .cross {
+            display: none;
+        }
+        .divider {
+            display: none;
+        }
+    }
+
+    .burger-menu .content .tab {
+        height: $burger-tab-height;
+        border: 1px solid transparent;
+    }
+    .burger-menu .content .tab.active {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.1);
+    }    
+}

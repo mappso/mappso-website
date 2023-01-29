@@ -9,21 +9,24 @@ const Layout: React.FC<Props> = (props) => {
     return (
         <div className="layout">
             <NavMenu
-                tabs={[
+                folders={[
                     {
-                        title: "Resume.cs",
-                        iconSrc: "/logo.svg",
-                        directorySrc: "/",
-                    },
-                    {
-                        title: "contact.ts",
-                        iconSrc: "/logo.svg",
-                        directorySrc: "/contact",
-                    },
-                    {
-                        title: "Tab3.dart",
-                        iconSrc: "/logo.svg",
-                        directorySrc: "/test",
+                        title: "src",
+                        iconSrc: "src/assets/icons/folder-src-open.svg",
+                        tabs: [
+                            {
+                                title: "Resume.cs",
+                                directorySrc: "/",
+                            },
+                            {
+                                title: "contact.ts",
+                                directorySrc: "/contact",
+                            },
+                            {
+                                title: "Tab3.dart",
+                                directorySrc: "/test",
+                            },
+                        ],
                     },
                 ]}
             />

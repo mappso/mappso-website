@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from "react";
+import { FolderModel } from "../models/folder.model";
 import "../styles/BurgerMenu.scss";
+import Folder from "./Folder";
+import Tab from "./Tab";
 
-interface Props {}
+interface Props {
+    folders: FolderModel[];
+}
 
 const BurgerMenu: React.FC<Props> = (props) => {
     const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
 
-    useEffect(()=>{
-        console.log("BurgerMenu.tsx: useEffect: burgerMenuOpen: " + burgerMenuOpen)
+    useEffect(() => {
+        console.log("BurgerMenu.tsx: useEffect: burgerMenuOpen: " + burgerMenuOpen);
     }, [burgerMenuOpen]);
 
     return (
-        <div>
+        <div className="menu-root">
             <div className="toggle-menu-button" onClick={() => setBurgerMenuOpen(!burgerMenuOpen)}>
                 <div className="graphic">
                     <div className="line"></div>
                 </div>
             </div>
 
-            <div className="burger-menu"></div>
+            <div className={"burger-menu" + (burgerMenuOpen ? " show" : "")}>
+                <div className="content">
+                    {burgerMenuOpen ? props.folders.map((f, index) => <Folder key={index} folder={f} />) : null}
+                </div>
+            </div>
         </div>
     );
 };

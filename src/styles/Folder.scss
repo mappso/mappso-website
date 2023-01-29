@@ -1,0 +1,122 @@
+@import "./Theme.scss";
+
+.folder {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: $burger-tab-height;
+
+    .upper {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+
+        &::before {
+            content: "";
+            margin-left: $dPadding;
+            border: solid $primary-color-white;
+            border-width: 0 1px 1px 0;
+            padding: 3px;
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            content: "";
+            height: $burger-tab-height;
+        }
+        .icon {
+            margin: 0px calc($dPadding/2);
+            width: 15px;
+            height: 15px;
+        }
+
+        p {
+            color: $primary-color-white;
+            font-size: 13px;
+        }
+
+        .cross {
+            width: 15px;
+            height: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .line {
+                width: 2px;
+                height: 10px;
+                position: absolute;
+                border-radius: 1px;
+                display: none;
+            }
+            .left {
+                transform: rotateZ(45deg);
+            }
+            .right {
+                transform: rotateZ(-45deg);
+            }
+        }
+
+        .divider {
+            width: 1px;
+            height: 100%;
+            background: #000;
+        }
+    }
+
+    .items {
+        width: 100%;
+        display: flex;
+    }
+
+    .items::before{
+        content: "";
+        border: solid rgba(255, 255, 255, 0.15);
+        border-width: 0.5px;
+        height: 100%;
+
+        position: relative;
+        top: 0;
+        left: $dPadding;
+    }
+
+    .items .tab-column {
+        display:flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 100%;
+
+        .icon{
+            margin-left: $dPadding*3;   
+        }
+    }
+    
+    // Active
+    &.active .upper {
+        background-color: $menu-color;
+        border-bottom: 0.2px solid #fff;
+        cursor: default;
+
+        & .cross .line {
+            background-color: $primary-color-white !important;
+            display: block;
+        }
+
+        p {
+            color: $primary-color-white;
+        }
+    }
+
+    // Hover
+    .upper:hover {
+        $hover-color: rgba(255, 255, 255, 0.15);
+        background-color: $hover-color;
+        cursor: pointer;
+
+        & .cross .line {
+            background-color: #717171;
+            display: block;
+        }
+    }
+}

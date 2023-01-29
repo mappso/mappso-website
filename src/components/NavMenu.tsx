@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { FolderModel } from "../models/folder.model";
 import { TabModel } from "../models/tab.model";
 import "../styles/NavMenu.scss";
 import "../styles/NavMenuIcons.scss";
 import BurgerMenu from "./BurgerMenu";
 import Tab from "./Tab";
 interface Props {
-    tabs: TabModel[];
+    folders: FolderModel[];
 }
 
 const NavMenu: React.FC<Props> = (props) => {
@@ -14,7 +15,9 @@ const NavMenu: React.FC<Props> = (props) => {
 
     const location = useLocation();
 
-    const title = props.tabs.find((t) => t.directorySrc == location.pathname)?.title ?? "not found";
+    const tabs = props.folders.map((f) => f.tabs).flat();
+
+    const title = tabs.find((t) => t.directorySrc == location.pathname)?.title ?? "not found";
 
     const closeButtonClicked = () => {
         console.log("Close");
@@ -48,11 +51,11 @@ const NavMenu: React.FC<Props> = (props) => {
                     <p>{title}</p>
                 </div>
                 <div className="nav-menu-top-right">
-                    <BurgerMenu/>
+                    <BurgerMenu folders={props.folders}/>
                 </div>
             </div>
             <div className="nav-menu-tabs-section">
-                {props.tabs.map((t, index) => (
+                {tabs.map((t, index) => (
                     <Tab key={index} tab={t} />
                 ))}
             </div>

@@ -1,6 +1,5 @@
 @import "./Theme.scss";
-$padding: 20px;
 
 .layout {
-    padding: $padding $padding 0px $padding;
+    padding: $dPadding $dPadding 0px $dPadding;
 }
