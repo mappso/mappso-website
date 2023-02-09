@@ -1,10 +1,11 @@
 import React from "react";
 import { FolderModel } from "../models/folder.model";
 import Tab from "./Tab";
-import "../styles/Folder.scss";
+import "../styles/navigation/Folder.scss";
 
 interface Props {
     folder: FolderModel;
+    onPressedAny?: () => void;
 }
 
 const Folder: React.FC<Props> = (props) => {
@@ -19,7 +20,7 @@ const Folder: React.FC<Props> = (props) => {
             <div className="items">
                 <div className="tab-column">
                     {props.folder.tabs.map((t, index) => (
-                        <Tab key={index} tab={t} />
+                        <Tab key={index} tab={t} onPressed={props.onPressedAny} />
                     ))}
                 </div>
             </div>

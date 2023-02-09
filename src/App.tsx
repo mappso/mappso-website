@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import "./styles/App.scss";
 import NavMenu from "./components/NavMenu";
-import Resume from "./pages/Resume";
+import Resume from "./pages/Resume/Resume";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Contact/Contact";
 import Layout from "./components/Layout";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
     const action = () => {

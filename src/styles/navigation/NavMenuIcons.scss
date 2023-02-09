@@ -1,81 +1,76 @@
-@import "./Theme.scss";
+@import "../Theme.scss";
 
 .dot :not(.show) {
     display: none;
 }
 
-.icon-close{
+.icon-close {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
 }
-.icon-close::before, .icon-close::after{
-    content: '';
+.icon-close::before,
+.icon-close::after {
+    content: "";
     position: absolute;
     height: 10px;
     width: 1.5px;
-    background-color: #a33c38;
+    background-color: rgb(139, 26, 17);
     border-radius: 1px;
 }
-.icon-close::before
-{
+.icon-close::before {
     transform: rotateZ(45deg);
 }
 
-.icon-close::after
-{
+.icon-close::after {
     transform: rotateZ(-45deg);
 }
 
-
-.icon-minimize{
+.icon-minimize {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
 }
-.icon-minimize::before{
-    content: '';
+.icon-minimize::before {
+    content: "";
     position: absolute;
     height: 10px;
     width: 1.5px;
-    background-color: #a0771f;
+    background-color: rgb(143, 89, 28);
     border-radius: 1px;
 }
-.icon-minimize::before
-{
+.icon-minimize::before {
     transform: rotateZ(90deg);
 }
 
-
-.icon-maximize{
+.icon-maximize {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
 }
-.icon-maximize::before{
-    content: '';
+.icon-maximize::before {
+    content: "";
     position: absolute;
     height: 7px;
     width: 7px;
-    background-color: #1e7f29;
+    background-color: rgb(40, 96, 23);
     border-radius: 1px;
 }
 
-.icon-maximize::after{
-    content: '';
+.icon-maximize::after {
+    content: "";
     position: absolute;
     height: 15px;
     width: 2px;
     background-color: #28c840;
 }
 
-.icon-maximize::after
-{
+.icon-maximize::after {
     transform: rotateZ(45deg);
 }

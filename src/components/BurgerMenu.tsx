@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FolderModel } from "../models/folder.model";
-import "../styles/BurgerMenu.scss";
+import "../styles/navigation/BurgerMenu.scss";
 import Folder from "./Folder";
 import Tab from "./Tab";
 
@@ -23,10 +23,19 @@ const BurgerMenu: React.FC<Props> = (props) => {
                 </div>
             </div>
 
-            <div className={"burger-menu" + (burgerMenuOpen ? " show" : "")}>
-                <div className="content">
-                    {burgerMenuOpen ? props.folders.map((f, index) => <Folder key={index} folder={f} />) : null}
-                </div>
+            <div
+                className={"burger-menu" + (burgerMenuOpen ? " show" : "")}
+                onClick={() => {
+                    console.log("pressed");
+                }}
+            >
+                <div
+                    className="transparent-area"
+                    onClick={() => {
+                        setBurgerMenuOpen(false);
+                    }}
+                ></div>
+                <div className="content">{burgerMenuOpen ? props.folders.map((f, index) => <Folder key={index} folder={f} onPressedAny={() => setBurgerMenuOpen(false)} />) : null}</div>
             </div>
         </div>
     );

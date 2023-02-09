@@ -1,0 +1,9 @@
+@import "../../Theme.scss";
+
+.resume {
+    .section {
+        height: calc(100vh - $nav-menu-total-height);
+        width: 100%;
+        background-color: $menu-color;
+    }
+}

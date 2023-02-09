@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TabModel } from "../models/tab.model";
 import { getIconSrc } from "../services/iconSelectionService";
-import "../styles/Tab.scss";
+import "../styles/navigation/Tab.scss";
 
 interface Props {
     tab: TabModel;
     className?: string;
+    onPressed?: () => void;
 }
 
 const Tab: React.FC<Props> = (props) => {
@@ -17,7 +18,7 @@ const Tab: React.FC<Props> = (props) => {
     const iconSrc = getIconSrc(props.tab.title);
 
     return (
-        <Link to={props.tab.directorySrc} className="link">
+        <Link to={props.tab.directorySrc} className="link" onClick={props.onPressed}>
             <div className={tabClassName}>
                 <div className="icon">
                     <img src={iconSrc} alt="tab logo" />

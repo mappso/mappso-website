@@ -1,10 +1,23 @@
-@import "./Theme.scss";
+@import "../Theme.scss";
+
+.nav-menu::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: - $dPadding 0 0 - $dPadding;
+    background-color: $primary-background-color;
+    z-index: -1;
+}
 
 .nav-menu {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: flex-start;
+    user-select: none;
+    position: sticky;
+    top: $dPadding;
 }
 
 .nav-menu-top {
@@ -12,7 +25,7 @@
     padding: $dPadding;
     width: calc(100% - $dPadding * 2);
     border-radius: $dPadding $dPadding 0px 0px;
-    height: $headerHeight;
+    height: $nav-menu-top-height;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,7 +39,7 @@
     height: 15px;
 }
 
-.nav-menu-top-middle{
+.nav-menu-top-middle {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -60,7 +73,7 @@
     background-color: #28c840;
 }
 
-.dot:hover{
+.dot:hover {
     cursor: pointer;
 }
 
@@ -69,9 +82,10 @@
         display: none !important;
     }
 }
+
 .nav-menu-tabs-section {
     width: 100%;
-    height: 35px;
+    height: $nav-menu-tab-height;
     background-color: $tab-background-color;
     display: flex;
     color: white;

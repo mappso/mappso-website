@@ -1,12 +1,25 @@
-$dPadding: 15px;
-$headerHeight: 20px;
-
+//Responsive
 $mobile-width: 600px;
 
-$burger-tab-height: 25px;
-
+//Colors
 $menu-color: #23272f;
 $tab-background-color: #1c2024;
-$primary-background-color: #e7e7e7;
+$primary-background-color: rgb(245, 245, 240);
 $primary-color-white: #d3d3d3;
 $secondary-color-white: #9ea5b4;
+
+//Padding
+$dPadding: 15px;
+$nav-menu-top-height: 20px;
+$nav-menu-tab-height: 35px;
+$burger-tab-height: 25px;
+
+$header-height: calc(3 * $dPadding + $nav-menu-top-height);
+
+$nav-menu-total-height: calc($header-height + $nav-menu-tab-height);
+
+@media screen and (max-width: $mobile-width) {
+    $nav-menu-total-height: calc($header-height) !important;
+}
+
+
