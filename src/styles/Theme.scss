@@ -16,10 +16,15 @@ $burger-tab-height: 25px;
 
 $header-height: calc(3 * $dPadding + $nav-menu-top-height);
 
-$nav-menu-total-height: calc($header-height + $nav-menu-tab-height);
-
-@media screen and (max-width: $mobile-width) {
-    $nav-menu-total-height: calc($header-height) !important;
+@mixin devices($device){
+    @if($device == mobile){
+        @media (max-width: $mobile-width) {
+            @content;
+        }
+    }
+    @else if($device == desktop){
+        @media (min-width: $mobile-width) {
+            @content;
+        }
+    }
 }
-
-
