@@ -19,6 +19,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ github.ref == 'refs/heads/main' && secrets.FIREBASE_SERVICE_ACCOUNT_MAPPSO_WEBSITE || secrets.FIREBASE_SERVICE_ACCOUNT_MAPPSO_WEBSITE_TEST }}'
+          firebaseServiceAccount: ${{ github.ref == 'refs/heads/main' && secrets.FIREBASE_SERVICE_ACCOUNT_MAPPSO_WEBSITE || secrets.FIREBASE_SERVICE_ACCOUNT_MAPPSO_WEBSITE_TEST }}
           channelId: live
           projectId: ${{ github.ref == 'refs/heads/main' && 'mappso-website' || 'mappso-website-test' }}

@@ -1,5 +1,5 @@
 export const getIconSrc = (fileName: string) => {
-    const assetFolder = "src/assets/icons/";
+    const assetFolder = "/icons/";
     let icon;
 
     const splitted = fileName.split(".");
