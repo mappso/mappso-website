@@ -12,19 +12,11 @@ const Layout: React.FC<Props> = (props) => {
                 folders={[
                     {
                         title: "src",
-                        iconSrc: "src/assets/icons/folder-src-open.svg",
+                        iconSrc: "/icons/folder-src-open.svg",
                         tabs: [
                             {
-                                title: "Resume.cs",
-                                directorySrc: "/",
-                            },
-                            {
                                 title: "contact.ts",
-                                directorySrc: "/contact",
-                            },
-                            {
-                                title: "Tab3.dart",
-                                directorySrc: "/test",
+                                directorySrc: "/",
                             },
                         ],
                     },

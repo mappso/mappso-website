@@ -17,9 +17,9 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" action={action} element={<Layout />}>
-                        <Route index action={action} element={<Resume />} />
-                        <Route path="contact" action={action} element={<Contact />} />
-                        <Route path="test" action={action} element={<Contact />} />
+
+                        <Route index action={action} element={<Contact />} />
+                        
                         <Route path="*" action={action} element={<NotFound />} />
                     </Route>
                 </Routes>

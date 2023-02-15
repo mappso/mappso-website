@@ -7,8 +7,9 @@ interface Props {
 const Contact: React.FC<Props> = (props) => {
    return (
       <div>
-         <h1>Contact</h1>
-         <p>Hej<br/><br/><br/><br/><br/><br/>Hej2</p>
+         <h1>The site is under development</h1>
+         <br/>
+         <p>contact@mappso.com</p>
       </div>
    );
 }
