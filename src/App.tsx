@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./styles/App.scss";
+import "./App.scss";
 import NavMenu from "./components/NavMenu";
 import Resume from "./pages/Resume/Resume";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

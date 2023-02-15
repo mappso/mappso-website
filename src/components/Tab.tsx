@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TabModel } from "../models/tab.model";
 import { getIconSrc } from "../services/iconSelectionService";
-import "../styles/navigation/Tab.scss";
+import "./Tab.scss";
 
 interface Props {
     tab: TabModel;

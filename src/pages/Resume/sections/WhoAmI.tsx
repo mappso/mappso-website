@@ -1,7 +1,7 @@
 import React from "react";
 import { ResumeSectionModel } from "../models/resumeModel";
 
-import "../../../styles/pages/Resume/sections/WhoAmI.scss"
+import "./WhoAmI.scss"
 
 interface Props {}
 

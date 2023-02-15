@@ -4,7 +4,7 @@ import { ResumeSectionModel } from "./models/resumeModel";
 import BeamHeroSection from "./sections/BeamHero";
 import WhoAmISection from "./sections/WhoAmI";
 
-import "../../styles/pages/Resume/Resume.scss";
+import "./Resume.scss";
 
 interface Props {}
 

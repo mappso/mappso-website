@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FolderModel } from "../models/folder.model";
-import "../styles/navigation/BurgerMenu.scss";
+import "./BurgerMenu.scss";
 import Folder from "./Folder";
 import Tab from "./Tab";
 

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FolderModel } from "../models/folder.model";
 import { TabModel } from "../models/tab.model";
-import "../styles/navigation/NavMenu.scss";
-import "../styles/navigation/NavMenuIcons.scss";
+import "./NavMenu.scss";
+import "./NavMenuIcons.scss";
 import BurgerMenu from "./BurgerMenu";
 import Tab from "./Tab";
 interface Props {

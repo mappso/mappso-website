@@ -1,7 +1,7 @@
 import React from "react";
 import { FolderModel } from "../models/folder.model";
 import Tab from "./Tab";
-import "../styles/navigation/Folder.scss";
+import "./Folder.scss";
 
 interface Props {
     folder: FolderModel;

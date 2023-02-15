@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import NavMenu from "./NavMenu";
-import "../styles/Layout.scss";
+import "./Layout.scss";
 
 interface Props {}
 
