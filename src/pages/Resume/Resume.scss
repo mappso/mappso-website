@@ -2,7 +2,7 @@
 
 .resume {
     .section {
-        height: calc(100vh - ($header-height + $nav-menu-tab-height));
+        min-height: calc(100vh - ($header-height + $nav-menu-tab-height));
 
         @include devices(mobile) {
             height: calc(100vh - $header-height);
