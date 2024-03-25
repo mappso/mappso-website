@@ -17,10 +17,7 @@ import "./WhoAmI.scss";
 interface Props {}
 
 const WhoAmISection: ResumeSectionModel<Props> = (props) => {
-    const code = \`
-    import React from "react";
-    import { ResumeSectionModel } from "../models/resumeModel";
-    import CodeEditor from "@uiw/react-textarea-code-editor";
+    const code = \`...
     \`
 
     const [codeSection, setCodeSection] = React.useState<string>("");
@@ -56,7 +53,7 @@ export default WhoAmISection;
 
     const [codeSection, setCodeSection] = React.useState<string>("");
 
-    let interval: NodeJS.Timer | undefined;
+    let interval: NodeJS.Timeout | undefined;
 
     useEffect(() => {
         if (interval) return;
