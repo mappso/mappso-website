@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@uiw/react-textarea-code-editor": "^3.0.2",
+    "copy-to-clipboard": "^3.3.3",
     "esbuild": "^0.20.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
+    "rehype-prism-plus": "^2.0.0",
+    "rehype-rewrite": "^4.0.2",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
