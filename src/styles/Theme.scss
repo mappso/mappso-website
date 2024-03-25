@@ -16,6 +16,8 @@ $burger-tab-height: 25px;
 
 $header-height: calc(3 * $dPadding + $nav-menu-top-height);
 
+$section-height: calc(100vh - $header-height - 3 * $dPadding);
+
 @mixin devices($device){
     @if($device == mobile){
         @media (max-width: $mobile-width) {
