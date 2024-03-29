@@ -12,9 +12,8 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout />}>
-                        <Route index element={<Resume />} />
+                        <Route index element={<Contact />} />
                         <Route path="contact" element={<Contact />} />
-                        <Route path="test" element={<Contact />} />
                         <Route path="*" element={<NotFound />} />
                     </Route>
                 </Routes>

@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import NavMenu from "./NavMenu";
 import "./Layout.scss";
 
-interface Props {}
+interface Props { }
 
 const Layout: React.FC<Props> = (props) => {
     return (
@@ -14,18 +14,18 @@ const Layout: React.FC<Props> = (props) => {
                         title: "src",
                         iconSrc: "/icons/folder-src-open.svg",
                         tabs: [
-                            {
-                                title: "Resume.cs",
-                                directorySrc: "/",
-                            },
+                            // {
+                            //     title: "Resume.cs",
+                            //     directorySrc: "/",
+                            // },
                             {
                                 title: "contact.ts",
-                                directorySrc: "/contact",
+                                directorySrc: "/",
                             },
-                            {
-                                title: "Tab3.dart",
-                                directorySrc: "/test",
-                            },
+                            // {
+                            //     title: "Tab3.dart",
+                            //     directorySrc: "/test",
+                            // },
                         ],
                     },
                 ]}
