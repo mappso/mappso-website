@@ -1,15 +1,14 @@
 import React from "react";
 import ResumeSection from "./components/Section";
 import { ResumeSectionModel } from "./models/resumeModel";
-import BeamHeroSection from "./sections/BeamHero";
 import WhoAmISection from "./sections/WhoAmI";
 
 import "./Resume.scss";
 
-interface Props {}
+interface Props { }
 
 const Resume: React.FC<Props> = (props) => {
-    const sections: ResumeSectionModel[] = [WhoAmISection, BeamHeroSection];
+    const sections: ResumeSectionModel[] = [WhoAmISection];
 
     return (
         <div className="resume">

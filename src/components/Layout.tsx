@@ -14,13 +14,13 @@ const Layout: React.FC<Props> = (props) => {
                         title: "src",
                         iconSrc: "/icons/folder-src-open.svg",
                         tabs: [
-                            // {
-                            //     title: "Resume.cs",
-                            //     directorySrc: "/",
-                            // },
+                            {
+                                title: "Resume.cs",
+                                directorySrc: "/",
+                            },
                             {
                                 title: "contact.ts",
-                                directorySrc: "/",
+                                directorySrc: "/contact",
                             },
                             // {
                             //     title: "Tab3.dart",

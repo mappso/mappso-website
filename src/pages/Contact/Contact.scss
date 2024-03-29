@@ -2,7 +2,7 @@
 
 .contact {
     display: grid;
-    height: $section-height;
+    height: calc($section-height + $dPadding);
     background-color: rgb(12, 173, 95);
 }
 

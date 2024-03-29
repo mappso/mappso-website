@@ -12,7 +12,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout />}>
-                        <Route index element={<Contact />} />
+                        <Route index element={<Resume />} />
                         <Route path="contact" element={<Contact />} />
                         <Route path="*" element={<NotFound />} />
                     </Route>

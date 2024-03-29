@@ -4,76 +4,43 @@ import CodeEditor from "@uiw/react-textarea-code-editor";
 
 import "./WhoAmI.scss";
 
-interface Props {}
+interface Props { }
 
 const WhoAmISection: ResumeSectionModel<Props> = (props) => {
-    const code = `
-import React, { useEffect } from "react";
-import { ResumeSectionModel } from "../models/resumeModel";
-import CodeEditor from "@uiw/react-textarea-code-editor";
+    const code =
+        `namespace Resume;
 
-import "./WhoAmI.scss";
+public static class Founder
+{
+    public const string Name = "Milo Jørgensen";
+    public const string Location = "Aarhus, Denmark";
+}`;
 
-interface Props {}
 
-const WhoAmISection: ResumeSectionModel<Props> = (props) => {
-    const code = \`...
-    \`
-
-    const [codeSection, setCodeSection] = React.useState<string>("");
-
-    let interval: NodeJS.Timer | undefined;
+    const characterDelay = 20;
+    const [sub, setSub] = React.useState<string>("");
+    const [done, setDone] = React.useState<boolean>(false);
 
     useEffect(() => {
-        if (interval) return;
+        if (sub.length == code.length) {
+            setDone(true);
+            return;
+        };
 
-        let internalCodeSection = codeSection;
-
-        interval = setInterval(() => {
-            if (internalCodeSection.length <= code.length) {
-                internalCodeSection += code[internalCodeSection.length] ?? "";
-
-                setCodeSection(internalCodeSection);
-            } else {
-                clearInterval(interval);
-            }
-        }, 20);
-    }, []);
+        const interval = setInterval(() => {
+            setSub(sub + code[sub.length]);
+        }, characterDelay);
+        return () => clearInterval(interval);
+    }, [sub]);
 
     return (
-        <div className="whoami">
-            <CodeEditor className="code" value={codeSection} language="typescript" readOnly></CodeEditor>
-        </div>
-    );
-};
-
-export default WhoAmISection;
-
-    `;
-
-    const [codeSection, setCodeSection] = React.useState<string>("");
-
-    let interval: NodeJS.Timeout | undefined;
-
-    useEffect(() => {
-        if (interval) return;
-
-        let internalCodeSection = codeSection;
-
-        interval = setInterval(() => {
-            if (internalCodeSection.length <= code.length) {
-                internalCodeSection += code[internalCodeSection.length] ?? "";
-
-                setCodeSection(internalCodeSection);
-            } else {
-                clearInterval(interval);
-            }
-        }, 5);
-    }, []);
-
-    return (
-        <div className="whoami">
-            <CodeEditor className="code" value={codeSection} language="typescript" readOnly></CodeEditor>
+        <div className="contact">
+            <CodeEditor
+                className="code"
+                value={sub}
+                language="csharp"
+                readOnly
+            ></CodeEditor>
         </div>
     );
 };
