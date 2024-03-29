@@ -31,7 +31,26 @@ const Contact: React.FC<Props> = (props) => {
 
    const code = `const mail = "contact@mappso.com";\nconst cvr = "42149705";`;
 
+   const characterDelay = 20;
+   const [sub, setSub] = React.useState<string>("");
+   const [done, setDone] = React.useState<boolean>(false);
+
    useEffect(() => {
+      if (sub.length == code.length) {
+         setDone(true);
+         return;
+      };
+
+      const interval = setInterval(() => {
+         setSub(sub + code[sub.length]);
+      }, characterDelay);
+      return () => clearInterval(interval);
+   }, [sub]);
+
+
+   useEffect(() => {
+      if (!done) return;
+
       if (!initializedRef.current) {
          const spanNodes = document.querySelectorAll("span.token.string");
 
@@ -42,13 +61,14 @@ const Contact: React.FC<Props> = (props) => {
          }
          initializedRef.current = true;
       }
-   }, [clipBoardElements]);
+   }, [clipBoardElements, done]);
+
 
    return (
       <div className="contact">
          <CodeEditor
             className="code"
-            value={code}
+            value={sub}
             language="typescript"
             readOnly
          ></CodeEditor>
