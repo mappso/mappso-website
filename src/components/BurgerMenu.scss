@@ -75,6 +75,7 @@ $graphic-width: 13px;
         bottom: 0;
         margin: 0px $dPadding;
         right: 0;
+        top: $header-height;
         width: calc(100vw - 2 * $dPadding);
         height: calc(100vh - $header-height);
         flex-direction: row;
