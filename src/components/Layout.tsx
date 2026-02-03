@@ -5,27 +5,23 @@ import "./Layout.scss";
 
 interface Props { }
 
-const Layout: React.FC<Props> = (props) => {
+const Layout: React.FC<Props> = () => {
     return (
         <div className="layout">
             <NavMenu
                 folders={[
                     {
-                        title: "src",
+                        title: "portfolio",
                         iconSrc: "/icons/folder-src-open.svg",
                         tabs: [
                             {
-                                title: "Resume.cs",
+                                title: "about.ts",
                                 directorySrc: "/",
                             },
                             {
-                                title: "contact.ts",
+                                title: "contact.cs",
                                 directorySrc: "/contact",
                             },
-                            // {
-                            //     title: "Tab3.dart",
-                            //     directorySrc: "/test",
-                            // },
                         ],
                     },
                 ]}

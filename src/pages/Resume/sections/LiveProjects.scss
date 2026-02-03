@@ -1,0 +1,249 @@
+@import "src/styles/Theme.scss";
+
+.live-projects {
+    padding: 60px 20px;
+    background: $menu-color;
+    min-height: 80vh;
+
+    @include devices(mobile) {
+        padding: 40px 15px;
+    }
+}
+
+.section-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+.terminal-prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 13px;
+    margin-bottom: 16px;
+
+    .prompt-symbol {
+        color: #10b981;
+    }
+
+    .prompt-command {
+        color: $primary-color-white;
+    }
+
+    .status-indicator {
+        color: $secondary-color-white;
+        transition: color 0.3s ease;
+
+        &.done {
+            color: #10b981;
+        }
+    }
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 24px;
+    font-weight: 600;
+    color: $primary-color-white;
+    margin: 0;
+
+    .title-icon {
+        color: #10b981;
+        animation: blink-status 2s ease-in-out infinite;
+    }
+
+    @include devices(mobile) {
+        font-size: 20px;
+    }
+}
+
+@keyframes blink-status {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+
+    @include devices(mobile) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+.project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: rgba(37, 37, 38, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+        background: rgba(37, 37, 38, 0.9);
+        border-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+        .external-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    &.loading {
+        pointer-events: none;
+    }
+
+    @include devices(mobile) {
+        padding: 14px;
+    }
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+
+    &.online {
+        background: #10b981;
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    }
+
+    &.checking {
+        background: #f59e0b;
+
+        .dot-pulse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f59e0b;
+            border-radius: 50%;
+            animation: pulse-check 1s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes pulse-check {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.project-name {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 16px;
+    font-weight: 600;
+    color: $primary-color-white;
+
+    @include devices(mobile) {
+        font-size: 14px;
+    }
+}
+
+.project-description {
+    flex: 1;
+    font-size: 13px;
+    color: $secondary-color-white;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+
+    @include devices(mobile) {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.project-url {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 11px;
+    color: #3178c6;
+    background: rgba(49, 120, 198, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.external-icon {
+    color: $secondary-color-white;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(37, 37, 38, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.skeleton-shimmer {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 100%
+    );
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}

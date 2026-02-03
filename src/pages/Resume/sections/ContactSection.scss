@@ -1,0 +1,198 @@
+@import "src/styles/Theme.scss";
+
+.contact-section {
+    padding: 60px 20px 100px; // Extra padding for status bar
+    background: linear-gradient(
+        180deg,
+        $tab-background-color 0%,
+        darken($tab-background-color, 3%) 100%
+    );
+    min-height: 60vh;
+
+    @include devices(mobile) {
+        padding: 40px 15px 100px;
+    }
+}
+
+.contact-container {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.section-header {
+    margin-bottom: 30px;
+}
+
+.terminal-prompt {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 13px;
+
+    .prompt-symbol {
+        color: #10b981;
+    }
+
+    .prompt-command {
+        color: $primary-color-white;
+    }
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.code-window {
+    background: rgba(30, 30, 30, 0.8);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.code-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(37, 37, 38, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    .file-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .file-name {
+        font-family: 'Source Code Pro', monospace;
+        font-size: 13px;
+        color: $primary-color-white;
+    }
+}
+
+.code-editor {
+    min-height: 250px;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+
+    @include devices(mobile) {
+        min-height: 200px;
+        font-size: 11px !important;
+    }
+
+    textarea {
+        outline: none !important;
+    }
+
+    // Make clickable elements work
+    .copy-button {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 3px;
+
+        &:hover {
+            background: rgba(49, 120, 198, 0.3);
+            box-shadow: 0 0 0 3px rgba(49, 120, 198, 0.3);
+        }
+
+        span {
+            pointer-events: none;
+        }
+    }
+}
+
+.quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 13px;
+    color: $primary-color-white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    &.copied {
+        background: rgba(16, 185, 129, 0.2);
+        border-color: rgba(16, 185, 129, 0.3);
+        color: #10b981;
+    }
+
+    svg {
+        flex-shrink: 0;
+    }
+
+    @include devices(mobile) {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}
+
+.copy-toast {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(16, 185, 129, 0.9);
+    color: white;
+    border-radius: 8px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 13px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: toastIn 0.3s ease;
+    z-index: 1000;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}

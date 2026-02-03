@@ -1,14 +1,191 @@
 @import "src/styles/Theme.scss";
 
 .resume {
-    .section {
-        min-height: calc(100vh - ($header-height + $nav-menu-tab-height));
+    background: $tab-background-color;
+    min-height: 100vh;
+    padding-bottom: 24px; // Space for status bar
+}
 
-        @include devices(mobile) {
-            height: calc(100vh - $header-height);
+// Featured Projects Section
+.featured-projects {
+    padding: 60px 20px;
+    background: $menu-color;
+
+    @include devices(mobile) {
+        padding: 40px 15px;
+    }
+}
+
+.featured-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 24px;
+    font-weight: 600;
+    color: $primary-color-white;
+    margin: 0;
+
+    .title-bracket {
+        color: #3178c6;
+    }
+
+    @include devices(mobile) {
+        font-size: 20px;
+    }
+}
+
+.project-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @include devices(mobile) {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 24px;
+    background: rgba(37, 37, 38, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #3178c6, #10b981);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+    }
+
+    &:hover {
+        background: rgba(37, 37, 38, 0.9);
+        border-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+
+        &::before {
+            transform: scaleX(1);
         }
 
-        width: 100%;
-        background-color: $menu-color;
+        .card-action svg {
+            transform: translateX(4px);
+        }
+    }
+
+    &.compozerr {
+        &::before {
+            background: linear-gradient(90deg, #a855f7, #3178c6);
+        }
+    }
+
+    &.starti {
+        &::before {
+            background: linear-gradient(90deg, #3178c6, #10b981);
+        }
+    }
+
+    .card-badge {
+        padding: 4px 10px;
+        background: rgba(49, 120, 198, 0.2);
+        border-radius: 4px;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 11px;
+        color: #3178c6;
+        margin-bottom: 12px;
+    }
+
+    h3 {
+        font-family: 'Source Code Pro', monospace;
+        font-size: 20px;
+        font-weight: 600;
+        color: $primary-color-white;
+        margin: 0 0 8px 0;
+
+        @include devices(mobile) {
+            font-size: 18px;
+        }
+    }
+
+    p {
+        font-size: 14px;
+        color: $secondary-color-white;
+        line-height: 1.6;
+        margin: 0 0 16px 0;
+        flex: 1;
+
+        @include devices(mobile) {
+            font-size: 13px;
+        }
+    }
+
+    .card-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+
+        span {
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 11px;
+            color: $secondary-color-white;
+        }
+    }
+
+    .card-action {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 13px;
+        color: #3178c6;
+
+        svg {
+            transition: transform 0.2s ease;
+        }
+    }
+}
+
+// Two column layout for skills and live projects
+.two-column-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include devices(mobile) {
+        grid-template-columns: 1fr;
+    }
+
+    // Override the min-height for these sections when in two-column
+    .skills-panel,
+    .live-projects {
+        min-height: auto;
+
+        @include devices(mobile) {
+            min-height: auto;
+        }
     }
 }

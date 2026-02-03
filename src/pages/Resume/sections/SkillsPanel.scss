@@ -1,0 +1,279 @@
+@import "src/styles/Theme.scss";
+
+.skills-panel {
+    padding: 60px 20px;
+    background: linear-gradient(
+        180deg,
+        $tab-background-color 0%,
+        darken($tab-background-color, 2%) 100%
+    );
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    @include devices(mobile) {
+        padding: 40px 15px;
+    }
+}
+
+.panel-container {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(37, 37, 38, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+
+    @include devices(mobile) {
+        max-width: 100%;
+    }
+}
+
+.panel-header {
+    padding: 12px 16px;
+    background: rgba(30, 30, 30, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .header-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $secondary-color-white;
+
+        svg {
+            opacity: 0.7;
+        }
+    }
+}
+
+.search-container {
+    padding: 12px 16px;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    .search-icon {
+        position: absolute;
+        left: 28px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $secondary-color-white;
+        opacity: 0.5;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 8px 12px 8px 36px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 13px;
+        color: $primary-color-white;
+        outline: none;
+        transition: border-color 0.2s ease, background 0.2s ease;
+
+        &::placeholder {
+            color: $secondary-color-white;
+            opacity: 0.5;
+        }
+
+        &:focus {
+            border-color: #3178c6;
+            background: rgba(0, 0, 0, 0.4);
+        }
+    }
+}
+
+.categories-list {
+    padding: 8px 0;
+}
+
+.category {
+    &:not(:last-child) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+}
+
+.category-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Source Code Pro', monospace;
+    text-align: left;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .chevron {
+        color: $secondary-color-white;
+        transition: transform 0.2s ease;
+        flex-shrink: 0;
+
+        &.expanded {
+            transform: rotate(90deg);
+        }
+    }
+
+    .category-icon {
+        color: #3178c6;
+        font-size: 12px;
+        font-weight: bold;
+        width: 24px;
+        text-align: center;
+    }
+
+    .category-name {
+        color: $primary-color-white;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .category-count {
+        margin-left: auto;
+        color: $secondary-color-white;
+        font-size: 11px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 8px;
+        border-radius: 10px;
+    }
+}
+
+.skills-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+
+    &.expanded {
+        max-height: 500px;
+    }
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px 8px 44px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.03);
+
+        .skill-name {
+            color: $primary-color-white;
+        }
+    }
+}
+
+.skill-icon {
+    width: 18px;
+    height: 18px;
+    background: rgba(49, 120, 198, 0.2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    .icon-dot {
+        width: 6px;
+        height: 6px;
+        background: #3178c6;
+        border-radius: 50%;
+    }
+}
+
+.skill-info {
+    flex: 1;
+    min-width: 0;
+
+    .skill-name {
+        display: block;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 13px;
+        color: $secondary-color-white;
+        margin-bottom: 4px;
+        transition: color 0.2s ease;
+    }
+}
+
+.proficiency-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+
+    .proficiency-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #3178c6 0%, #10b981 100%);
+        border-radius: 2px;
+        transition: width 0.5s ease;
+    }
+}
+
+.skill-tooltip {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    padding: 8px 12px;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: tooltipFadeIn 0.2s ease;
+
+    @include devices(mobile) {
+        display: none;
+    }
+
+    .tooltip-label {
+        display: block;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 10px;
+        color: $secondary-color-white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+    }
+
+    .tooltip-projects {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .tooltip-project {
+        padding: 2px 8px;
+        background: rgba(49, 120, 198, 0.2);
+        border-radius: 3px;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 11px;
+        color: #3178c6;
+    }
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
