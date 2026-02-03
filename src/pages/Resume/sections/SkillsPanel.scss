@@ -1,18 +1,13 @@
 @import "src/styles/Theme.scss";
 
 .skills-panel {
-    padding: 60px 20px;
-    background: linear-gradient(
-        180deg,
-        $tab-background-color 0%,
-        darken($tab-background-color, 2%) 100%
-    );
-    min-height: 100vh;
+    padding: 20px;
+    background: transparent;
     display: flex;
     justify-content: center;
 
     @include devices(mobile) {
-        padding: 40px 15px;
+        padding: 15px;
     }
 }
 

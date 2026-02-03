@@ -84,7 +84,7 @@ const Resume: React.FC<Props> = () => {
                 </div>
             </section>
 
-            <GitTimeline />
+            <GitTimeline onOpenCompozerr={() => openProjectModal(compozerrProject)} />
 
             <div className="two-column-section">
                 <SkillsPanel />

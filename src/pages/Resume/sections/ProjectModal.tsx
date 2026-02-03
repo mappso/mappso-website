@@ -238,7 +238,6 @@ export const compozerrProject: ProjectData = {
 └─────────────────────────────────────────────────────────────┘
         `,
     },
-    screenshot: "/assets/compozerr-screenshot.png",
     link: "https://compozerr.com",
 };
 

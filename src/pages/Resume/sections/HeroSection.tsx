@@ -10,7 +10,6 @@ interface Developer {
   name: string;
   title: string;
   location: string;
-  focus: string[];
   available: boolean;
 }
 
@@ -18,17 +17,12 @@ const milo: Developer = {
   name: "Milo Jørgensen",
   title: "Full-Stack Developer & Founder",
   location: "Aarhus, Denmark",
-  focus: [
-    "Cloud Infrastructure",
-    "Mobile Development",
-    "Developer Tooling"
-  ],
   available: true, // Open to opportunities
 };
 
 export default milo;`;
 
-    const characterDelay = 12;
+    const characterDelay = 6;
     const [displayedCode, setDisplayedCode] = useState<string>("");
     const [isTypingDone, setIsTypingDone] = useState<boolean>(false);
 

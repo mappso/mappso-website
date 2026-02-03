@@ -1,12 +1,11 @@
 @import "src/styles/Theme.scss";
 
 .live-projects {
-    padding: 60px 20px;
-    background: $menu-color;
-    min-height: 80vh;
+    padding: 20px;
+    background: transparent;
 
     @include devices(mobile) {
-        padding: 40px 15px;
+        padding: 15px;
     }
 }
 

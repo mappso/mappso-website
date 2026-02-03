@@ -6,13 +6,19 @@
     padding-bottom: 24px; // Space for status bar
 }
 
+// Smooth scroll behavior
+html {
+    scroll-behavior: smooth;
+}
+
 // Featured Projects Section
 .featured-projects {
-    padding: 60px 20px;
-    background: $menu-color;
+    padding: 50px 20px;
+    background: linear-gradient(180deg, $menu-color 0%, darken($menu-color, 2%) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 
     @include devices(mobile) {
-        padding: 40px 15px;
+        padding: 35px 15px;
     }
 }
 

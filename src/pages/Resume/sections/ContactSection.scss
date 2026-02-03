@@ -1,169 +1,203 @@
 @import "src/styles/Theme.scss";
 
 .contact-section {
-    padding: 60px 20px 100px; // Extra padding for status bar
-    background: linear-gradient(
-        180deg,
-        $tab-background-color 0%,
-        darken($tab-background-color, 3%) 100%
-    );
-    min-height: 60vh;
+    padding: 40px 20px 100px;
+    background: $tab-background-color;
 
     @include devices(mobile) {
-        padding: 40px 15px 100px;
+        padding: 30px 15px 100px;
     }
 }
 
 .contact-container {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
-    position: relative;
 }
 
-.section-header {
-    margin-bottom: 30px;
-}
+.contact-header {
+    text-align: center;
+    margin-bottom: 40px;
 
-.terminal-prompt {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 10px 16px;
-    border-radius: 6px;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 13px;
-
-    .prompt-symbol {
-        color: #10b981;
-    }
-
-    .prompt-command {
-        color: $primary-color-white;
-    }
-}
-
-.contact-content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.code-window {
-    background: rgba(30, 30, 30, 0.8);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.code-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    background: rgba(37, 37, 38, 0.9);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-
-    .file-icon {
-        display: flex;
-        align-items: center;
-    }
-
-    .file-name {
+    h2 {
         font-family: 'Source Code Pro', monospace;
-        font-size: 13px;
+        font-size: 28px;
+        font-weight: 600;
         color: $primary-color-white;
+        margin: 0 0 12px 0;
+
+        @include devices(mobile) {
+            font-size: 24px;
+        }
+    }
+
+    p {
+        font-size: 15px;
+        color: $secondary-color-white;
+        margin: 0;
     }
 }
 
-.code-editor {
-    min-height: 250px;
-    font-size: 13px !important;
-    line-height: 1.6 !important;
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
 
     @include devices(mobile) {
-        min-height: 200px;
-        font-size: 11px !important;
-    }
-
-    textarea {
-        outline: none !important;
-    }
-
-    // Make clickable elements work
-    .copy-button {
-        background: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-        font: inherit;
-        color: inherit;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        border-radius: 3px;
-
-        &:hover {
-            background: rgba(49, 120, 198, 0.3);
-            box-shadow: 0 0 0 3px rgba(49, 120, 198, 0.3);
-        }
-
-        span {
-            pointer-events: none;
-        }
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
 }
 
-.quick-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-
-    &.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.action-button {
+.contact-card {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 13px;
-    color: $primary-color-white;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
 
     &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.12);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+        &::before {
+            opacity: 1;
+        }
+
+        .card-action {
+            opacity: 1;
+            color: $primary-color-white;
+        }
+
+        .card-icon {
+            transform: scale(1.05);
+        }
     }
 
     &.copied {
-        background: rgba(16, 185, 129, 0.2);
-        border-color: rgba(16, 185, 129, 0.3);
-        color: #10b981;
-    }
+        border-color: rgba(16, 185, 129, 0.4);
+        background: rgba(16, 185, 129, 0.1);
 
-    svg {
-        flex-shrink: 0;
+        .card-icon {
+            color: #10b981;
+        }
+
+        .card-action {
+            opacity: 1;
+            color: #10b981;
+        }
     }
 
     @include devices(mobile) {
+        padding: 16px;
+        gap: 12px;
+    }
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    color: $secondary-color-white;
+    flex-shrink: 0;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.github {
+        color: #f0f6fc;
+    }
+
+    &.linkedin {
+        color: #0a66c2;
+    }
+
+    &.blog {
+        color: #10b981;
+    }
+
+    @include devices(mobile) {
+        width: 44px;
+        height: 44px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+}
+
+.card-label {
+    font-size: 12px;
+    color: $secondary-color-white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-value {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    color: $primary-color-white;
+
+    @include devices(mobile) {
+        font-size: 13px;
+    }
+}
+
+.card-action {
+    color: $secondary-color-white;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.contact-footer {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    span {
+        font-family: 'Source Code Pro', monospace;
         font-size: 12px;
-        padding: 8px 12px;
+        color: $secondary-color-white;
+    }
+
+    @include devices(mobile) {
+        gap: 16px;
     }
 }
 
@@ -176,7 +210,7 @@
     align-items: center;
     gap: 8px;
     padding: 12px 20px;
-    background: rgba(16, 185, 129, 0.9);
+    background: rgba(16, 185, 129, 0.95);
     color: white;
     border-radius: 8px;
     font-family: 'Source Code Pro', monospace;
