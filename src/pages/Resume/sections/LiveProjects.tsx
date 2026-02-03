@@ -20,6 +20,11 @@ const projects: Project[] = [
         description: "Real estate document management with AI compliance",
     },
     {
+        url: "https://github.com/tomilodk/flash-banger",
+        name: "Flash Banger",
+        description: "Desktop app for instant flash messages across networks",
+    },
+    {
         url: "https://pdftoepub-3a3bd.web.app",
         name: "PDF to EPUB",
         description: "Document format converter tool",
