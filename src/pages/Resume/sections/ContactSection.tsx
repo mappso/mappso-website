@@ -51,7 +51,7 @@ const ContactSection: React.FC = () => {
 
                     {/* GitHub */}
                     <a
-                        href="https://github.com/milo-codes"
+                        href="https://github.com/tomilodk"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="contact-card"
@@ -63,7 +63,7 @@ const ContactSection: React.FC = () => {
                         </div>
                         <div className="card-content">
                             <span className="card-label">GitHub</span>
-                            <span className="card-value">milo-codes</span>
+                            <span className="card-value">tomilodk</span>
                         </div>
                         <div className="card-action">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -76,7 +76,7 @@ const ContactSection: React.FC = () => {
 
                     {/* LinkedIn */}
                     <a
-                        href="https://linkedin.com/in/milojorgensen"
+                        href="https://www.linkedin.com/in/milorj/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="contact-card"
@@ -88,7 +88,7 @@ const ContactSection: React.FC = () => {
                         </div>
                         <div className="card-content">
                             <span className="card-label">LinkedIn</span>
-                            <span className="card-value">milojorgensen</span>
+                            <span className="card-value">milorj</span>
                         </div>
                         <div className="card-action">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

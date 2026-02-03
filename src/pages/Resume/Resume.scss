@@ -176,22 +176,3 @@ html {
     }
 }
 
-// Two column layout for skills and live projects
-.two-column-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    @include devices(mobile) {
-        grid-template-columns: 1fr;
-    }
-
-    // Override the min-height for these sections when in two-column
-    .skills-panel,
-    .live-projects {
-        min-height: auto;
-
-        @include devices(mobile) {
-            min-height: auto;
-        }
-    }
-}

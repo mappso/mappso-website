@@ -86,10 +86,9 @@ const Resume: React.FC<Props> = () => {
 
             <GitTimeline onOpenCompozerr={() => openProjectModal(compozerrProject)} />
 
-            <div className="two-column-section">
-                <SkillsPanel />
-                <LiveProjects />
-            </div>
+            <LiveProjects />
+
+            <SkillsPanel />
 
             <ContactSection />
             <StatusBar />

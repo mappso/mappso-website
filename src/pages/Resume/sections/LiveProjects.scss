@@ -1,11 +1,11 @@
 @import "src/styles/Theme.scss";
 
 .live-projects {
-    padding: 20px;
-    background: transparent;
+    padding: 50px 20px;
+    background: $menu-color;
 
     @include devices(mobile) {
-        padding: 15px;
+        padding: 40px 15px;
     }
 }
 
@@ -15,7 +15,7 @@
 }
 
 .section-header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .terminal-prompt {
@@ -74,8 +74,8 @@
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
 
     @include devices(mobile) {
         grid-template-columns: repeat(2, 1fr);
