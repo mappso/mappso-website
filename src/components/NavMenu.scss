@@ -7,7 +7,6 @@
     width: 100%;
     background-color: $menu-color;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    user-select: none;
 }
 
 .nav-content {
@@ -16,6 +15,7 @@
     justify-content: space-between;
     padding: 12px 20px;
     max-width: 100%;
+    pointer-events: auto;
 
     @include devices(mobile) {
         padding: 10px 16px;
@@ -111,6 +111,7 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    pointer-events: auto;
 }
 
 .nav-link {
@@ -125,6 +126,8 @@
     transition: all 0.2s ease;
     position: relative;
     z-index: 10;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
         color: $primary-color-white;
