@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./GitTimeline.scss";
 
 interface AchievementLink {
@@ -123,6 +123,38 @@ const experiences: Experience[] = [
 
 const GitTimeline: React.FC<GitTimelineProps> = ({ onOpenCompozerr }) => {
     const [expandedId, setExpandedId] = useState<string | null>(null);
+    const [hasAutoExpanded, setHasAutoExpanded] = useState(false);
+    const timelineRef = useRef<HTMLDivElement>(null);
+    const firstItemRef = useRef<HTMLDivElement>(null);
+
+    // Auto-expand first item when scrolling into view
+    useEffect(() => {
+        if (hasAutoExpanded) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !hasAutoExpanded) {
+                        // Slight delay for better visual effect
+                        setTimeout(() => {
+                            setExpandedId(experiences[0].id);
+                            setHasAutoExpanded(true);
+                        }, 300);
+                    }
+                });
+            },
+            {
+                threshold: 0.3,
+                rootMargin: "-50px 0px",
+            }
+        );
+
+        if (firstItemRef.current) {
+            observer.observe(firstItemRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, [hasAutoExpanded]);
 
     const toggleExpand = (id: string) => {
         setExpandedId(expandedId === id ? null : id);
@@ -145,11 +177,12 @@ const GitTimeline: React.FC<GitTimelineProps> = ({ onOpenCompozerr }) => {
                 </div>
             </div>
 
-            <div className="timeline-container">
+            <div className="timeline-container" ref={timelineRef}>
                 <div className="timeline-graph">
                     {experiences.map((exp, index) => (
                         <div
                             key={exp.id}
+                            ref={index === 0 ? firstItemRef : undefined}
                             className={`timeline-item ${expandedId === exp.id ? 'expanded' : ''} ${exp.parallel ? 'parallel' : ''}`}
                         >
                             {/* Git graph visualization */}

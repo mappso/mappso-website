@@ -3,29 +3,10 @@ import { Outlet } from "react-router-dom";
 import NavMenu from "./NavMenu";
 import "./Layout.scss";
 
-interface Props { }
-
-const Layout: React.FC<Props> = () => {
+const Layout: React.FC = () => {
     return (
         <div className="layout">
-            <NavMenu
-                folders={[
-                    {
-                        title: "portfolio",
-                        iconSrc: "/icons/folder-src-open.svg",
-                        tabs: [
-                            {
-                                title: "about.ts",
-                                directorySrc: "/",
-                            },
-                            {
-                                title: "contact.cs",
-                                directorySrc: "/contact",
-                            },
-                        ],
-                    },
-                ]}
-            />
+            <NavMenu />
             <Outlet />
         </div>
     );

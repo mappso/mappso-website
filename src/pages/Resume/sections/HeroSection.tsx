@@ -53,9 +53,12 @@ export default milo;`;
                     <div className="photo-glow"></div>
                     <img
                         src="/assets/profile.jpeg"
-                        alt="Milo Jørgensen"
+                        alt="Milo R. Jørgensen"
                         className="hero-photo"
                     />
+                    <div className="name-display">
+                        <span className="name-text">Milo R. Jørgensen</span>
+                    </div>
                     <div className={`availability-badge ${isTypingDone ? 'visible' : ''}`}>
                         <span className="pulse"></span>
                         <span>Available for work</span>

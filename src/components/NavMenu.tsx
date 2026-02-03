@@ -1,65 +1,158 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { FolderModel } from "../models/folder.model";
-import { TabModel } from "../models/tab.model";
+import { useState, useEffect } from "react";
 import "./NavMenu.scss";
-import "./NavMenuIcons.scss";
-import BurgerMenu from "./BurgerMenu";
-import Tab from "./Tab";
-interface Props {
-    folders: FolderModel[];
+
+interface NavSection {
+    id: string;
+    label: string;
 }
 
-const NavMenu: React.FC<Props> = (props) => {
-    const [active, setActive] = useState(false);
+const sections: NavSection[] = [
+    { id: "about", label: "about" },
+    { id: "featured", label: "featured" },
+    { id: "experience", label: "experience" },
+    { id: "projects", label: "live" },
+    { id: "skills", label: "skills" },
+    { id: "contact", label: "contact" },
+];
 
-    const location = useLocation();
+const NavMenu: React.FC = () => {
+    const [activeSection, setActiveSection] = useState("about");
+    const [dotHover, setDotHover] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-    const tabs = props.folders.map((f) => f.tabs).flat();
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY + 150;
 
-    const title = tabs.find((t) => t.directorySrc == location.pathname)?.title ?? "not found";
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i].id);
+                if (section && section.offsetTop <= scrollPosition) {
+                    setActiveSection(sections[i].id);
+                    break;
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // Close mobile menu on scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            if (mobileMenuOpen) {
+                setMobileMenuOpen(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [mobileMenuOpen]);
+
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+            setMobileMenuOpen(false);
+        }
+    };
 
     const closeButtonClicked = () => {
-        console.log("Close");
-        
         window.close();
     };
 
-    const minimizeButtonClicked = () => {
-        console.log("Minimize");
-    };
-
-    const maximizeButtonClicked = () => {
-        console.log("Maximize");
-    };
-
     return (
-        <div className="nav-menu">
-            <div className="nav-menu-top">
-                <div className="nav-menu-top-left" onMouseOver={() => setActive(true)} onMouseOut={() => setActive(false)}>
+        <nav className="nav-menu">
+            <div className="nav-content">
+                {/* macOS Window Dots */}
+                <div
+                    className="window-dots"
+                    onMouseOver={() => setDotHover(true)}
+                    onMouseOut={() => setDotHover(false)}
+                >
                     <div onClick={closeButtonClicked} className="dot red">
-                        <div className={"icon icon-close" + (active ? " show" : "")}></div>
+                        <div className={`icon icon-close${dotHover ? " show" : ""}`}></div>
                     </div>
-                    <div onClick={minimizeButtonClicked} className="dot yellow">
-                        <div className={"icon icon-minimize" + (active ? " show" : "")}></div>
+                    <div className="dot yellow">
+                        <div className={`icon icon-minimize${dotHover ? " show" : ""}`}></div>
                     </div>
-                    <div onClick={maximizeButtonClicked} className="dot green">
-                        <div className={"icon icon-maximize" + (active ? " show" : "")}></div>
+                    <div className="dot green">
+                        <div className={`icon icon-maximize${dotHover ? " show" : ""}`}></div>
                     </div>
                 </div>
-                <div className="nav-menu-top-middle">
-                    <p>{title}</p>
+
+                {/* Path/Breadcrumb Style Navigation - Desktop */}
+                <div className="nav-path">
+                    <span className="path-prefix">~/milo</span>
+                    <span className="path-separator">/</span>
+                    <div className="section-links">
+                        {sections.map((section, index) => (
+                            <span key={section.id}>
+                                <button
+                                    className={`nav-link ${activeSection === section.id ? "active" : ""}`}
+                                    onClick={() => scrollToSection(section.id)}
+                                >
+                                    {section.label}
+                                </button>
+                                {index < sections.length - 1 && (
+                                    <span className="link-separator">/</span>
+                                )}
+                            </span>
+                        ))}
+                    </div>
                 </div>
-                <div className="nav-menu-top-right">
-                    <BurgerMenu folders={props.folders}/>
+
+                {/* Mobile Menu Button */}
+                <button
+                    className={`mobile-menu-toggle ${mobileMenuOpen ? 'open' : ''}`}
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label="Toggle navigation menu"
+                >
+                    <span className="hamburger-line"></span>
+                    <span className="hamburger-line"></span>
+                    <span className="hamburger-line"></span>
+                </button>
+            </div>
+
+            {/* Mobile Dropdown Menu */}
+            <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+                <div className="mobile-menu-header">
+                    <span className="terminal-prompt">
+                        <span className="prompt-symbol">$</span>
+                        <span className="prompt-text">cd ~/milo/</span>
+                        <span className="cursor-blink">_</span>
+                    </span>
+                </div>
+                <div className="mobile-menu-links">
+                    {sections.map((section, index) => (
+                        <button
+                            key={section.id}
+                            className={`mobile-nav-link ${activeSection === section.id ? 'active' : ''}`}
+                            onClick={() => scrollToSection(section.id)}
+                            style={{ animationDelay: `${index * 50}ms` }}
+                        >
+                            <span className="link-prefix">./</span>
+                            <span className="link-name">{section.label}</span>
+                            {activeSection === section.id && (
+                                <span className="active-indicator">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                                        <path d="M5 12l5 5L20 7"/>
+                                    </svg>
+                                </span>
+                            )}
+                        </button>
+                    ))}
                 </div>
             </div>
-            <div className="nav-menu-tabs-section">
-                {tabs.map((t, index) => (
-                    <Tab key={index} tab={t} />
-                ))}
-            </div>
-        </div>
+
+            {/* Mobile overlay */}
+            {mobileMenuOpen && (
+                <div
+                    className="mobile-menu-overlay"
+                    onClick={() => setMobileMenuOpen(false)}
+                />
+            )}
+        </nav>
     );
 };
 
