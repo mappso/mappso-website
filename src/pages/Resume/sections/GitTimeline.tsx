@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import "./GitTimeline.scss";
 
 interface AchievementLink {
     text: string;
     linkText: string;
-    linkType: "modal" | "external";
+    linkType: "modal" | "external" | "store";
     linkTarget: string;
     suffix?: string;
 }
@@ -114,8 +114,8 @@ const experiences: Experience[] = [
         description: "Independent game development, creating and publishing mobile games.",
         achievements: [
             { text: "Published games at ", linkText: "limboo.mappso.com", linkType: "external", linkTarget: "https://limboo.mappso.com" },
+            { text: "Built mobile game ", linkText: "Beam Hero", linkType: "store", linkTarget: "beam-hero", suffix: " - available on iOS & Android" },
             "Learned full product lifecycle",
-            "Built games from concept to release",
         ],
         techStack: ["C#", "Unity", "Mobile Development"],
     },
@@ -126,6 +126,20 @@ const GitTimeline: React.FC<GitTimelineProps> = ({ onOpenCompozerr }) => {
     const [hasAutoExpanded, setHasAutoExpanded] = useState(false);
     const timelineRef = useRef<HTMLDivElement>(null);
     const firstItemRef = useRef<HTMLDivElement>(null);
+
+    // Smart store link - detects user agent to route to appropriate app store
+    const beamHeroUrl = useMemo(() => {
+        const userAgent = navigator.userAgent.toLowerCase();
+        const isApple = /iphone|ipad|ipod|macintosh|mac os x/.test(userAgent);
+        return isApple
+            ? 'https://apps.apple.com/dk/app/beam-hero/id1501346103?l=da'
+            : 'https://play.google.com/store/apps/details?id=com.LIMBOOAPPGAMES.BeamHero&hl=en';
+    }, []);
+
+    const getStoreUrl = (target: string) => {
+        if (target === 'beam-hero') return beamHeroUrl;
+        return '#';
+    };
 
     // Auto-expand first item when scrolling into view
     useEffect(() => {
@@ -245,6 +259,20 @@ const GitTimeline: React.FC<GitTimelineProps> = ({ onOpenCompozerr }) => {
                                                                 >
                                                                     {achievement.linkText}
                                                                 </button>
+                                                                {achievement.suffix}
+                                                            </>
+                                                        ) : achievement.linkType === "store" ? (
+                                                            <>
+                                                                {achievement.text}
+                                                                <a
+                                                                    href={getStoreUrl(achievement.linkTarget)}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="inline-link external"
+                                                                    onClick={(e) => e.stopPropagation()}
+                                                                >
+                                                                    {achievement.linkText}
+                                                                </a>
                                                                 {achievement.suffix}
                                                             </>
                                                         ) : (
