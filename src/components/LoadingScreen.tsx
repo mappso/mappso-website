@@ -8,7 +8,7 @@ interface LoadingScreenProps {
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({
     onComplete,
-    minimumDuration = 3500,
+    minimumDuration = 1750,
 }) => {
     const [isExiting, setIsExiting] = useState(false);
     const [showTagline, setShowTagline] = useState(false);

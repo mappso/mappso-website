@@ -8,9 +8,11 @@ import NotFound from "./pages/NotFound/NotFound";
 import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
-    const [isLoading, setIsLoading] = useState(true);
+    const hasSeenLoading = sessionStorage.getItem("hasSeenLoading");
+    const [isLoading, setIsLoading] = useState(!hasSeenLoading);
 
     const handleLoadingComplete = useCallback(() => {
+        sessionStorage.setItem("hasSeenLoading", "true");
         setIsLoading(false);
     }, []);
 
