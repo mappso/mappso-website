@@ -83,7 +83,7 @@ const NavMenu: React.FC = () => {
 
                 {/* Path/Breadcrumb Style Navigation - Desktop */}
                 <div className="nav-path">
-                    <span className="path-prefix">~/milo</span>
+                    <span className="path-prefix">~/mappso</span>
                     <span className="path-separator">/</span>
                     <div className="section-links">
                         {sections.map((section, index) => (
@@ -119,7 +119,7 @@ const NavMenu: React.FC = () => {
                 <div className="mobile-menu-header">
                     <span className="terminal-prompt">
                         <span className="prompt-symbol">$</span>
-                        <span className="prompt-text">cd ~/milo/</span>
+                        <span className="prompt-text">cd ~/mappso/</span>
                         <span className="cursor-blink">_</span>
                     </span>
                 </div>
