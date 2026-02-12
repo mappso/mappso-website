@@ -30,6 +30,11 @@ const projects: Project[] = [
         description: "Document format converter tool",
     },
     {
+        url: "https://eatart.dk",
+        name: "EatArt",
+        description: "Ultra-fast site with perfect 100 SEO score",
+    },
+    {
         url: "https://limboo.mappso.com",
         name: "Limboo Games",
         description: "Game development portfolio",
