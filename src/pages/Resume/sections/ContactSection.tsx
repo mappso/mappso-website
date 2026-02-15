@@ -127,7 +127,7 @@ const ContactSection: React.FC = () => {
                 </div>
 
                 <div className="contact-footer">
-                    <span className="cvr">CVR: 42471736</span>
+                    <span className="cvr">CVR: 42149705</span>
                     <span className="location">Aarhus, Denmark</span>
                 </div>
             </div>
