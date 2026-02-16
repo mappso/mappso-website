@@ -6,6 +6,7 @@ import LiveProjects from "./sections/LiveProjects";
 import ContactSection from "./sections/ContactSection";
 import ProjectModal, { ProjectData, compozerrProject, startiProject } from "./sections/ProjectModal";
 import StatusBar from "../../components/StatusBar";
+import SEO from "../../components/SEO";
 
 import "./Resume.scss";
 
@@ -27,6 +28,10 @@ const Resume: React.FC<Props> = () => {
 
     return (
         <div className="resume">
+            <SEO
+                path="/"
+                description="Portfolio of Milo R. Jørgensen — Full-Stack Developer & Founder based in Aarhus, Denmark. Building scalable web applications with React, .NET, TypeScript, and cloud infrastructure."
+            />
             <HeroSection />
 
             {/* Project Showcase Cards */}

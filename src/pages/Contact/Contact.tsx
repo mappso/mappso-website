@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import copy from "copy-to-clipboard";
+import SEO from "../../components/SEO";
 import "./Contact.scss";
 
 interface Props { }
@@ -66,6 +67,11 @@ const Contact: React.FC<Props> = (props) => {
 
    return (
       <div className="contact">
+         <SEO
+            title="Contact"
+            description="Get in touch with Milo R. Jørgensen — available for freelance work, collaboration, and interesting projects. Based in Aarhus, Denmark."
+            path="/contact"
+         />
          <CodeEditor
             className="code"
             value={sub}
