@@ -10,7 +10,7 @@ export interface SiteRoute {
     changefreq: "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 }
 
-export const SITE_URL = "https://mappso.com";
+export const SITE_URL = "https://blog.mappso.com";
 
 export const routes: SiteRoute[] = [
     { path: "/", priority: 1.0, changefreq: "weekly" },

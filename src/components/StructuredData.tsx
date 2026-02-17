@@ -4,8 +4,8 @@ const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Milo R. Jørgensen",
-    url: "https://mappso.com",
-    image: "https://mappso.com/assets/profile.jpeg",
+    url: "https://blog.mappso.com",
+    image: "https://blog.mappso.com/assets/profile.jpeg",
     jobTitle: "Full-Stack Developer & Founder",
     address: {
         "@type": "PostalAddress",
@@ -32,7 +32,7 @@ const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "mappso",
-    url: "https://mappso.com",
+    url: "https://blog.mappso.com",
     author: {
         "@type": "Person",
         name: "Milo R. Jørgensen",
