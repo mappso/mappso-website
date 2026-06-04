@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import copy from "copy-to-clipboard";
+import { COMPANY_CVR, COMPANY_NAME } from "../../../constants/company";
 import "./ContactSection.scss";
 
 const ContactSection: React.FC = () => {
@@ -127,7 +128,7 @@ const ContactSection: React.FC = () => {
                 </div>
 
                 <div className="contact-footer">
-                    <span className="cvr">CVR: 42149705</span>
+                    <span className="cvr">{COMPANY_NAME} · CVR: {COMPANY_CVR}</span>
                     <span className="location">Aarhus, Denmark</span>
                 </div>
             </div>

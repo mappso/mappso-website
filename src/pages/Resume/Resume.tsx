@@ -4,11 +4,39 @@ import GitTimeline from "./sections/GitTimeline";
 import SkillsPanel from "./sections/SkillsPanel";
 import LiveProjects from "./sections/LiveProjects";
 import ContactSection from "./sections/ContactSection";
-import ProjectModal, { ProjectData, compozerrProject, startiProject } from "./sections/ProjectModal";
+import ProjectModal, { ProjectData, kurvoProject, compozerrProject, startiProject } from "./sections/ProjectModal";
 import StatusBar from "../../components/StatusBar";
 import SEO from "../../components/SEO";
 
 import "./Resume.scss";
+
+interface FeaturedProject {
+    project: ProjectData;
+    badge: string;
+    blurb: string;
+    tech: string[];
+}
+
+const featuredProjects: FeaturedProject[] = [
+    {
+        project: kurvoProject,
+        badge: "Personal Project",
+        blurb: "Rally-style motorcycle navigation with curvature-scored routes, pace-note voice guidance, and a web route planner.",
+        tech: ["React Native", "Node.js", "OSRM"],
+    },
+    {
+        project: compozerrProject,
+        badge: "Personal Project",
+        blurb: "Full-stack hosting platform with modular templates, CLI tooling, and automated VM infrastructure.",
+        tech: [".NET 9", "React", "Proxmox"],
+    },
+    {
+        project: startiProject,
+        badge: "CTO Role",
+        blurb: "SaaS platform converting websites into native apps with push notifications, biometrics, and geofencing.",
+        tech: [".NET MAUI", "Firebase", "GCP"],
+    },
+];
 
 interface Props {}
 
@@ -46,45 +74,28 @@ const Resume: React.FC<Props> = () => {
                     </div>
 
                     <div className="project-cards">
-                        <button
-                            className="project-card compozerr"
-                            onClick={() => openProjectModal(compozerrProject)}
-                        >
-                            <div className="card-badge">Personal Project</div>
-                            <h3>Compozerr</h3>
-                            <p>Full-stack hosting platform with modular templates, CLI tooling, and automated VM infrastructure.</p>
-                            <div className="card-tech">
-                                <span>.NET 9</span>
-                                <span>React</span>
-                                <span>Proxmox</span>
-                            </div>
-                            <div className="card-action">
-                                <span>View Details</span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                                </svg>
-                            </div>
-                        </button>
-
-                        <button
-                            className="project-card starti"
-                            onClick={() => openProjectModal(startiProject)}
-                        >
-                            <div className="card-badge">CTO Role</div>
-                            <h3>starti.app</h3>
-                            <p>SaaS platform converting websites into native apps with push notifications, biometrics, and geofencing.</p>
-                            <div className="card-tech">
-                                <span>.NET MAUI</span>
-                                <span>Firebase</span>
-                                <span>GCP</span>
-                            </div>
-                            <div className="card-action">
-                                <span>View Details</span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                                </svg>
-                            </div>
-                        </button>
+                        {featuredProjects.map(({ project, badge, blurb, tech }) => (
+                            <button
+                                key={project.id}
+                                className={`project-card ${project.id}`}
+                                onClick={() => openProjectModal(project)}
+                            >
+                                <div className="card-badge">{badge}</div>
+                                <h3>{project.name}</h3>
+                                <p>{blurb}</p>
+                                <div className="card-tech">
+                                    {tech.map((item) => (
+                                        <span key={item}>{item}</span>
+                                    ))}
+                                </div>
+                                <div className="card-action">
+                                    <span>View Details</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </div>
+                            </button>
+                        ))}
                     </div>
                 </div>
             </section>
