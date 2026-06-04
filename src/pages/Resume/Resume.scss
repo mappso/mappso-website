@@ -100,6 +100,12 @@ html {
         }
     }
 
+    &.kurvo {
+        &::before {
+            background: linear-gradient(90deg, #ff5a1f, #a855f7);
+        }
+    }
+
     &.compozerr {
         &::before {
             background: linear-gradient(90deg, #a855f7, #3178c6);

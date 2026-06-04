@@ -186,6 +186,59 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
 export default ProjectModal;
 
 // Project data
+export const kurvoProject: ProjectData = {
+    id: "kurvo",
+    name: "Kurvo",
+    tagline: "Rally-style curve navigation for motorcyclists",
+    description:
+        "A navigation app that scores every route by its curves. Roads are color-graded by curvature, and upcoming turns are announced with rally co-driver pace notes (R3, L5, Hairpin) - voice-guided so riders can read the road ahead like a stage. Plan multi-stop routes on the web, drive them on your phone.",
+    features: [
+        "Curvature-scored routes with color-graded roads",
+        "Rally-style pace note annotations and voice guidance",
+        "Freeride mode - curve scoring without a destination",
+        "Scenic route discovery preferring winding roads",
+        "Web planner synced to the mobile app",
+        "Trip history with stats and curve ratings",
+        "Subscriptions via RevenueCat (Kurvo+)",
+    ],
+    techStack: [
+        {
+            category: "Mobile",
+            items: ["React Native", "Expo", "TypeScript"],
+        },
+        {
+            category: "Backend",
+            items: ["Node.js", "OSRM routing", "Firebase", "Caddy", "Docker"],
+        },
+        {
+            category: "Infrastructure",
+            items: ["Multi-VM deployment", "CI/CD tagged releases", "RevenueCat"],
+        },
+    ],
+    architecture: {
+        description: "Mobile app backed by a replicated stateless tier and a singleton relay tier, with dedicated OSRM routing VMs:",
+        diagram: `
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│   ┌─────────┐      ┌─────────────┐      ┌──────────────┐   │
+│   │ Mobile  │─────▶│   Gateway   │─────▶│  Stateless   │   │
+│   │  App    │      │   (Caddy)   │      │  Tier ×2/×3  │   │
+│   └─────────┘      └──────┬──────┘      └──────┬───────┘   │
+│    React Native           │              API + curves      │
+│    + Expo                 ▼                    │           │
+│                    ┌─────────────┐             ▼           │
+│                    │ Relay Tier  │      ┌──────────┐       │
+│                    │ (WebSocket) │      │   OSRM   │       │
+│                    └─────────────┘      │ Routing  │       │
+│                     singleton ×1        └──────────┘       │
+│                                          dedicated VM      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+        `,
+    },
+    link: "https://kurvo.app",
+};
+
 export const compozerrProject: ProjectData = {
     id: "compozerr",
     name: "Compozerr",

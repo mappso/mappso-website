@@ -2,12 +2,13 @@ import React, { useEffect, useRef } from "react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import copy from "copy-to-clipboard";
 import SEO from "../../components/SEO";
+import { COMPANY_CVR, COMPANY_EMAIL, COMPANY_NAME } from "../../constants/company";
 import "./Contact.scss";
 
 interface Props { }
 
 const Contact: React.FC<Props> = (props) => {
-   const clipBoardElements = ["contact@mappso.com", "42149705"];
+   const clipBoardElements = [COMPANY_EMAIL, COMPANY_CVR, COMPANY_NAME];
    const initializedRef = useRef(false); // Ref to track initialization
 
    const addToClipboardAction = (span: Element) => {
@@ -30,7 +31,7 @@ const Contact: React.FC<Props> = (props) => {
       button.appendChild(span);
    };
 
-   const code = `const mail = "contact@mappso.com";\nconst cvr = "42149705";`;
+   const code = `const company = "${COMPANY_NAME}";\nconst mail = "${COMPANY_EMAIL}";\nconst cvr = "${COMPANY_CVR}";`;
 
    const characterDelay = 20;
    const [sub, setSub] = React.useState<string>("");

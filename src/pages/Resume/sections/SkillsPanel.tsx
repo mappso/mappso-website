@@ -51,6 +51,7 @@ const skillCategories: SkillCategory[] = [
     {
         name: "Mobile",
         skills: [
+            { name: "React Native", proficiency: 9.5 },
             { name: ".NET MAUI", proficiency: 8 },
             { name: "Xamarin", proficiency: 8 },
             { name: "Flutter", proficiency: 6 },

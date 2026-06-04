@@ -10,6 +10,11 @@ interface Project {
 
 const projects: Project[] = [
     {
+        url: "https://kurvo.app",
+        name: "Kurvo",
+        description: "Rally-style motorcycle navigation with curvature-scored routes",
+    },
+    {
         url: "https://compozerr.com",
         name: "Compozerr",
         description: "Full-stack hosting platform with modular templates",
