@@ -1,22 +1,13 @@
-import { useState, useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.scss";
 import Resume from "./pages/Resume/Resume";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Contact from "./pages/Contact/Contact";
 import Layout from "./components/Layout";
 import NotFound from "./pages/NotFound/NotFound";
-import LoadingScreen from "./components/LoadingScreen";
 import { COMPANY_CVR } from "./constants/company";
 
 function App() {
-    const hasSeenLoading = sessionStorage.getItem("hasSeenLoading");
-    const [isLoading, setIsLoading] = useState(!hasSeenLoading);
-
-    const handleLoadingComplete = useCallback(() => {
-        sessionStorage.setItem("hasSeenLoading", "true");
-        setIsLoading(false);
-    }, []);
-
     useEffect(() => {
         const onKeyDown = (e: KeyboardEvent) => {
             if (e.key.toLowerCase() !== "c") return;
@@ -32,7 +23,6 @@ function App() {
 
     return (
         <div className="App">
-            {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
             <header className="App-header"></header>
             <BrowserRouter>
                 <Routes>
